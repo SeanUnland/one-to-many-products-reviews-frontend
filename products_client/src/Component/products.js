@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Link, Route } from "react-router-dom";
 
 // const products = (props) => {
 //   return <div></div>;
@@ -15,7 +16,9 @@ class Products extends React.Component {
         <React.Fragment key={i}>
           <div>{data.name}</div>
           <div>{data.price}</div>
-          <img src={data.img} alt="product images"></img>
+          <Link to="/reviews">
+            <img src={data.img} alt="product images"></img>
+          </Link>
         </React.Fragment>
       );
     });
