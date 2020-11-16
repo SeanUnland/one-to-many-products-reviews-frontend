@@ -1,5 +1,7 @@
 import React from "react";
 import Products from "./products";
+import Reviews from "./reviews";
+import { Route } from "react-router-dom";
 import PropTypes from "prop-types";
 import axios from "axios";
 import { get } from "http";
@@ -21,11 +23,25 @@ class Display extends React.Component {
       this.setState({ datas: data });
     });
   }
+
+  changeReview() {
+    axios.get("http://localhost:3000/products/1/reviews").then((response) => {
+      const dataReview = response.data;
+      this.setState({ datas: dataReview });
+    });
+  }
+
   render() {
     return (
       <>
-        <Products datas={this.state.datas} />
-        <button onClick={this.changeList.bind(this)}>Products</button>
+        <Route path="/">
+          <Products datas={this.state.datas} />
+          <button onClick={this.changeList.bind(this)}>Products</button>
+        </Route>
+        <Route path="/reviews">
+          <Reviews datas={this.state.datas} />
+          <button onClick={this.changeList.bind(this)}>Reviews</button>
+        </Route>
       </>
     );
   }

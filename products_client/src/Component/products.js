@@ -1,4 +1,6 @@
 import React from "react";
+import Reviews from "./reviews";
+import axios from "axios";
 import PropTypes from "prop-types";
 import { Link, Route } from "react-router-dom";
 
@@ -10,6 +12,7 @@ class Products extends React.Component {
   constructor(props) {
     super(props);
   }
+
   render() {
     const products = this.props.datas.map(function (data, i) {
       return (
